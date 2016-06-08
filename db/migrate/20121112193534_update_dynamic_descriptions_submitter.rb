@@ -4,8 +4,9 @@ class UpdateDynamicDescriptionsSubmitter < ActiveRecord::Migration
      add_column :dynamic_descriptions, :submitter_id, :integer
      add_constraint 'dynamic_descriptions', 'dynamic_descriptions_submitter_id', 'submitter_id', 'users', 'id'
      
-     execute "update  dynamic_descriptions, users 
-       set dynamic_descriptions.submitter_id = users.id
+     execute "update dynamic_descriptions
+       set submitter_id = users.id
+       from users
        where 
        (users.username = submitter or users.email = submitter) and
        submitter <> 'anonymous'"
