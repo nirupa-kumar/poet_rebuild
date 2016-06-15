@@ -1,0 +1,51 @@
+.flickr_pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 0.3em;
+  cursor: default; }
+  .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em; }
+  .flickr_pagination .disabled {
+    color: #aaaaaa; }
+  .flickr_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #ff0084; }
+  .flickr_pagination a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063dc;
+      color: white; }
+  .flickr_pagination .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .flickr_pagination .previous_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .previous_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
+
+
+table tr.evenrow {background-color: white; }
+table tr.oddrow {background-color: gainsboro; }
+.poet_footer {margin: 40px 10px 0px 10px; }
+
+h3.help {font-size: 1.5em; margin-top: 32px; font-weight: bold; color: #5E6469;}
+.image-wrap {display: inline-block;overflow-y: hidden;overflow-x: auto;max-width: 100%;}
+table.confluenceTable{margin:5px;border-collapse:collapse;}
+td.confluenceTd,table.confluenceTable td.confluenceTd{border-width:1px;border-style:solid;border-color:#ddd;padding:5px;vertical-align:top;min-width:.6em;}
+th.confluenceTh,table.confluenceTable th.confluenceTh{border-width:1px;border-style:solid;border-color:#ddd;padding:5px;background-color:#f0f0f0;text-align:left;vertical-align:top;min-width:.6em;}
+td.confluenceTd, table.confluenceTable td.confluenceTd {border-collapse: collapse;}
+
+.inline form {display: inline; }
+
+header-wrap {
+position: relative;  /* constrains the absolutely positioned search-bar div */
+overflow: auto; /* clears the floated search-bar div */
+}
+

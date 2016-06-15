@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root :to => "home#index"
+
+  # modified_config = ActiveAdmin::Devise.config.clone
+  # modified_config[:controllers][:registrations] = 'registrations'
+  # devise_for :users, modified_config
+  get "edit_book/describe"
+  get "edit_book/description_guidance", :controller => 'edit_book', :action => 'description_guidance'
+  get "edit_book/help", :controller => 'edit_book', :action => 'help'
+
+  get "user/terms_of_service", :controller => 'users', :action => 'terms_of_service'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
