@@ -48,30 +48,26 @@ ActiveRecord::Schema.define(version: 20131115200654) do
     t.decimal "percent_essential_described", default: 0.0
   end
 
-  create_table "books", id: false, force: :cascade do |t|
-    t.string  "uid",                      null: false
-    t.string  "title"
-    t.string  "isbn"
-    t.integer "status"
-    t.date    "created_at"
-    t.date    "updated_at"
-    t.string  "xml_file"
-    t.date    "last_approved"
-    t.integer "library_id"
-    t.integer "user_id"
-    t.string  "publisher"
-    t.date    "publisher_date"
-    t.string  "file_type"
-    t.string  "authors"
-    t.string  "description"
-    t.date    "deleted_at"
-    t.integer "math_replacement_mode_id"
+  create_table "books", force: :cascade do |t|
+    t.string   "uid",                                        null: false
+    t.string   "title"
+    t.string   "isbn",           limit: 13
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "xml_file",                  default: "none", null: false
+    t.datetime "last_approved"
+    t.integer  "library_id"
+    t.integer  "user_id"
+    t.string   "publisher"
+    t.date     "publisher_date"
+    t.string   "file_type"
+    t.datetime "deleted_at"
   end
 
   add_index "books", ["isbn"], name: "index_books_on_isbn", using: :btree
-  add_index "books", ["library_id"], name: "books_library_id", using: :btree
-  add_index "books", ["math_replacement_mode_id"], name: "books_math_replacement_mode_id", using: :btree
   add_index "books", ["title"], name: "index_books_on_title", using: :btree
+  add_index "books", ["uid"], name: "index_books_on_uid", unique: true, using: :btree
 
   create_table "content_models", force: :cascade do |t|
     t.text     "summary"
@@ -249,6 +245,9 @@ ActiveRecord::Schema.define(version: 20131115200654) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "book_fragments", "books", name: "book_fragments_book_id"
+  add_foreign_key "book_stats", "books", name: "book_stats_book_id"
+  add_foreign_key "books", "libraries", name: "books_library_id"
   add_foreign_key "dynamic_descriptions", "users", column: "submitter_id", name: "dynamic_descriptions_submitter_id"
   add_foreign_key "dynamic_images", "book_fragments", name: "dynamic_images_book_frag_id"
   add_foreign_key "jobs", "users", name: "jobs_user_id"
