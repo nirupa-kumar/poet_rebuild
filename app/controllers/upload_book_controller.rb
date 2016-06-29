@@ -98,7 +98,7 @@ class UploadBookController < ApplicationController
       end
 
       if !book
-         book = Book.create(:uid => @book_uid, :file_type => file_type, :status => 4, :library =>  current_library, :user_id => current_user.id, :math_replacement_mode_id => math_replacement_mode)
+         book = Book.create(:uid => @book_uid, :file_type => file_type, :status => 4)
       end
 
       pid = fork do
@@ -106,9 +106,9 @@ class UploadBookController < ApplicationController
           @repository.store_file(book_file.path, @book_uid, @book_uid + ".zip", nil)
           job = nil
           if file_type == "Epub"
-            job = EpubParser.new(book.id, @repository.name, current_library, current_user.id)
+            job = EpubParser.new(book.id, @repository.name)
           else
-            job = DaisyParser.new(book.id, @repository.name, current_library, current_user.id)
+            job = DaisyParser.new(book.id, @repository.name)
           end
 
         job.perform
