@@ -35,6 +35,11 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  #Additional Paperclip config for this environment
+  PAPERCLIP_S3_STORAGE_OPTIONS = {:storage => :aws,
+                               :s3_credentials => {:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']},
+                               :bucket => ENV['POET_ASSET_BUCKET']}
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.

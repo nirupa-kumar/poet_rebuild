@@ -50,7 +50,7 @@ class EditBookController < ApplicationController
       return
     end
 
-    @book = Book.where(:id => book_id, :library_id => current_library.id).first
+    @book = Book.where(:id => book_id).first
     if(!@book)
       flash[:alert] = "There is no book in the system with that ID (#{book_id}) ."
       render :template => error_redirect
